@@ -1,3 +1,3 @@
 [submodule "third_party/GPT-SoVITS"]
 	path = third_party/GPT-SoVITS
-	url = https://github.com/w-okada/GPT-SoVITS.git
+	url = git@github.com:artbiit/GPT-SoVITS.git
