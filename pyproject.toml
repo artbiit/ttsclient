@@ -14,13 +14,12 @@ pytorch-lightning = "2.4.0"
 matplotlib = "3.9.1.post1"
 requests = "2.32.3"
 einops = "0.8.0"
-transformers = "4.44.0"
+transformers = "^4.48.0"
 cn2an = "0.5.22"
 pypinyin = "0.52.0"
 jieba-fast = "0.53"
 librosa = "0.10.2.post1"
 scipy = "1.14.0"
-pyopenjtalk = "0.3.4"
 fastapi = "0.112.0"
 portpicker = "1.6.0"
 uvicorn = "0.30.5"
@@ -44,7 +43,7 @@ onnx = "1.16.2"
 torchmetrics = "1.4.2"
 onnxsim = "^0.4.36"
 x-transformers = "^2.1.2"
-torchaudio = {version = "2.4.1", source = "torch_cuda12"}
+torchaudio = {version = "^2.6.0", source = "torch_cu128"}
 jieba = "^0.42.1"
 split-lang = "^2.1.0"
 nltk = "3.8.1"
@@ -54,7 +53,8 @@ peft = "^0.14.0"
 fast-langdetect = "^0.3.1"
 tojyutping = "^3.2.0"
 onnxruntime-gpu = "1.20.1"
-torch = {version = "2.4.1", source = "torch_cuda12"}
+torch = {version = "^2.6.0", source = "torch_cu128"}
+pyopenjtalk-plus = "^0.4.1.post7"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -68,8 +68,8 @@ types-toml = "^0.10.8.20240310"
 types-tqdm = "^4.66.0.20240417"
 
 [[tool.poetry.source]]
-name = "torch_cuda12"
-url = "https://download.pytorch.org/whl/cu121"
+name = "torch_cu128"
+url = "https://download.pytorch.org/whl/cu128"
 priority = "explicit"
 
 

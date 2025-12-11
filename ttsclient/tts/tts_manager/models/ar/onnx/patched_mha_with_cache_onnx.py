@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Tuple
 from torch import Tensor
 import torch
 from torch.nn.functional import linear, scaled_dot_product_attention
@@ -33,7 +33,6 @@ def multi_head_attention_forward_patched(
     is_causal: bool = False,
     cache=None,
 ):
-
     # set up shape vars
     _, _, embed_dim = query.shape
     attn_mask = _canonical_mask(

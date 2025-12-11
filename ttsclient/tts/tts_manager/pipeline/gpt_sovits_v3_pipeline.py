@@ -6,6 +6,7 @@ import librosa
 import numpy as np
 import torch
 import torchaudio
+import soundfile as sf
 
 from module.mel_processing import mel_spectrogram_torch
 from ttsclient.gpt_sovits_utils import cut1, cut2, cut3, cut4, cut5, get_spepc, merge_short_text_in_array, process_text, splits
@@ -349,7 +350,13 @@ class GPTSoVITSV3Pipeline(Pipeline):
                 phoneme_ids1 = torch.LongTensor(phones2).to(self.device).unsqueeze(0)
 
                 fea_ref, ge = self.vq_model.decode_encp(prompt.unsqueeze(0), phoneme_ids0, refer)
-                ref_audio, sr = torchaudio.load(ref_wav_path)
+                # ref_audio, sr = torchaudio.load(ref_wav_path, backend="soundfile")
+                ref_audio_np, sr = sf.read(ref_wav_path)
+                ref_audio = torch.from_numpy(ref_audio_np).float()
+                if ref_audio.ndim == 1:
+                    ref_audio = ref_audio.unsqueeze(0)
+                else:
+                    ref_audio = ref_audio.transpose(0, 1)
                 ref_audio = ref_audio.to(self.device).float()
 
                 if ref_audio.shape[0] == 2:

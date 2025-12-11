@@ -1,3 +1,4 @@
+from typing import List
 # modified from https://github.com/CjangCjengh/vits/blob/main/text/japanese.py
 import re
 import os

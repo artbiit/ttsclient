@@ -10,6 +10,7 @@ import os
 sys.path.append("./third_party/GPT-SoVITS/GPT_SoVITS")
 sys.path.append("./third_party/GPT-SoVITS")
 # BigVGANモジュールをインポート
+print(f"DEBUG: sys.path: {sys.path}")
 from GPT_SoVITS.BigVGAN.bigvgan import BigVGAN
 from GPT_SoVITS.BigVGAN.env import AttrDict
 

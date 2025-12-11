@@ -1,7 +1,7 @@
 import io
 from typing import Optional
 import wave
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from ttsclient.const import LanguageType
@@ -68,7 +68,7 @@ class RestAPITTSManager:
         records = TTSManager.get_instance().jp_text_to_user_dict_records(get_jp_text_to_user_dict_records_param)
         return records
 
-    def post_generate_voice(self, generarte_voice_param: GenerateVoiceParam):
+    def post_generate_voice(self, generarte_voice_param: GenerateVoiceParam, request: Request):
         last_sampling_rate, last_audio_data = TTSManager.get_instance().run(generarte_voice_param)
         # sf.write("output.wav", last_audio_data, last_sampling_rate)
 
@@ -81,7 +81,10 @@ class RestAPITTSManager:
 
         audio_buffer.seek(0)
 
-        return StreamingResponse(audio_buffer, media_type="audio/wav", headers={"Content-Disposition": "attachment; filename=output.wav"})
+        return StreamingResponse(audio_buffer, media_type="audio/wav", headers={
+            "Content-Disposition": 'inline; filename="output.wav"',
+            "Access-Control-Expose-Headers": "Content-Disposition"
+        })
 
         # with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as tmp_file:
         #     tmp_file_name = tmp_file.name
