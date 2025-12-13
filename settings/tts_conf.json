@@ -4,5 +4,5 @@
     "transcribe_audio": true,
     "transcriber_model_size": "small",
     "transcriber_device": "cpu",
-    "transcriber_compute_type": "int8"
+    "transcriber_compute_type": "float32"
 }

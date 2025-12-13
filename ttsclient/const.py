@@ -18,7 +18,8 @@ LOG_FILE = Path("ttsclient.log")
 ModuleDir = Path("modules")
 
 UPLOAD_DIR_STR = "upload_dir"
-UPLOAD_DIR = Path(UPLOAD_DIR_STR)
+# UPLOAD_DIR = Path(UPLOAD_DIR_STR)
+UPLOAD_DIR = HERE.parent / UPLOAD_DIR_STR
 UPLOAD_DIR.mkdir(exist_ok=True)
 
 SSL_KEY_DIR = Path("ssl_key")
